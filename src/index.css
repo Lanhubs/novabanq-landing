@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit-spin 45s linear infinite;
+  will-change: transform;
+}
+
+/* Subtle floating animations for hero & globe elements */
+@keyframes float-subtle-left {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-subtle-right {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-phone {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes float-globe {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-left {
+  animation: float-subtle-left 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-right {
+  animation: float-subtle-right 7s ease-in-out 1s infinite;
+  will-change: transform;
+}
+
+.animate-float-phone {
+  animation: float-phone 8s ease-in-out 0.5s infinite;
+  will-change: transform;
+}
+
+.animate-float-globe {
+  animation: float-globe 5s ease-in-out infinite;
+  will-change: transform;
+}
