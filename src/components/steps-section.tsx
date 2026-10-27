@@ -22,7 +22,7 @@ const StepSection: FC<StepSectionProps> = ({
     step4Image = step4Mockup,
 }) => {
     return (
-        <section className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+        <section id="how-it-works" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-extrabold text-[#111827] text-center tracking-tight leading-[1.2] mb-10 sm:mb-14 lg:mb-16">

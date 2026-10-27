@@ -84,7 +84,7 @@ const SouthAfricaFlag: FC = () => (
 const CountriesSection: FC = (
 ) => {
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-24 lg:py-28 bg-linear-to-r from-[#fbfdfc] to-[#ebfaf1] via-[#50C878]/40 via-60%">
+    <section id="about" className="relative w-full overflow-hidden py-16 sm:py-24 lg:py-28 bg-linear-to-r from-[#fbfdfc] to-[#ebfaf1] via-[#50C878]/40 via-60%">
       {/* Ambient background glow */}
       <div
         className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-175 h-175 -z-10 opacity-60"

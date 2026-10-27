@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
 import logo from "../assets/novabanq.png"
 
 const navItems: { link: string; text: string }[] = [
@@ -18,13 +17,13 @@ const Header = ({ onJoinWaitlist }: HeaderProps) => {
   return (
     <header className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-6 relative z-50">
       <div className="flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <a href="#top" className="flex items-center" aria-label="Novabanq home">
           <img
             src={logo}
             alt="Novabanq"
             className="h-6 sm:h-7 w-auto object-contain"
           />
-        </Link>
+        </a>
 
         {/* Desktop / Tablet Nav */}
         <nav className="hidden md:flex items-center gap-8">
@@ -42,7 +41,11 @@ const Header = ({ onJoinWaitlist }: HeaderProps) => {
         {/* Right Action & Mobile Toggle */}
         <div className="flex items-center gap-3">
           <button
-            onClick={onJoinWaitlist}
+            onClick={() => {
+              setIsMobileMenuOpen(false)
+              if (onJoinWaitlist) onJoinWaitlist()
+              else window.location.hash = "waitlist"
+            }}
             type="button"
             className="bg-[#45D17C] hover:bg-[#3bbd6e] active:scale-95 text-white font-semibold text-sm sm:text-[15px] px-5 py-2 sm:px-7 sm:py-3 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
           >
@@ -92,7 +95,10 @@ const Header = ({ onJoinWaitlist }: HeaderProps) => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-6 right-6 mt-3 p-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-zinc-200/80 flex flex-col gap-2 z-50">
+        <div
+        
+        onMouseOut={()=> setIsMobileMenuOpen(false)}
+        className="md:hidden absolute top-full left-6 right-0  p-4 bg-white/95 backdrop-blur-xl rounded-bl-xl rounded-tl-xl shadow-2xl border border-zinc-200/80 flex flex-col gap-2 z-50">
           <nav className="flex flex-col">
             {navItems.map((item, idx) => (
               <a

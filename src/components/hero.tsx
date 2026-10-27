@@ -18,7 +18,7 @@ const Hero = ({
     onJoinWaitlist,
 }: HeroProps): ReactNode => {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-linear-to-b from-white via-[#ebfaf1] to-[#7be1a8]/60 flex flex-col justify-between">
+        <div id="top" className="relative min-h-screen overflow-hidden bg-linear-to-b from-white via-[#ebfaf1] to-[#7be1a8]/60 flex flex-col justify-between">
             {/* Decorative ambient radial aura in background */}
             <div
                 className="pointer-events-none absolute inset-0 -z-10 opacity-70"

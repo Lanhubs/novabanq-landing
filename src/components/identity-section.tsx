@@ -7,7 +7,7 @@ interface IdentitySectionProps {
 
 const IdentitySection: FC<IdentitySectionProps> = ({ mockupImageSrc }) => {
   return (
-    <section className="relative w-full overflow-hidden bg-[#50C878] text-white pt-16 sm:pt-20 lg:pt-20 pb-0">
+    <section id="features" className="relative w-full overflow-hidden bg-[#50C878] text-white pt-16 sm:pt-20 lg:pt-20 pb-0">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-12 lg:gap-8">
         {/* Left Column: Heading & Subtitle */}
         <div className="w-full lg:w-1/2 text-left z-10 pb-4 lg:pb-24">

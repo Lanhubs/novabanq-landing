@@ -15,15 +15,15 @@ const footerColumns = [
         links: [
             { text: "About us", href: "#about" },
             { text: "Waitlist", href: "#waitlist" },
-            { text: "Contact", href: "#contact" },
+            { text: "Contact", href: import.meta.env.VITE_CONTACT_EMAIL ? `mailto:${import.meta.env.VITE_CONTACT_EMAIL}` : undefined },
         ],
     },
     {
         title: "Socials",
         links: [
-            { text: "Twitter", href: "https://twitter.com" },
-            { text: "Instagram", href: "https://instagram.com" },
-            { text: "Linkedin", href: "https://linkedin.com" },
+            { text: "Twitter", href: import.meta.env.VITE_TWITTER_URL },
+            { text: "Instagram", href: import.meta.env.VITE_INSTAGRAM_URL },
+            { text: "Linkedin", href: import.meta.env.VITE_LINKEDIN_URL },
         ],
     },
 ]
@@ -57,6 +57,8 @@ const Footer: FC = () => {
                                     <li key={link.text}>
                                         <a
                                             href={link.href}
+                                            aria-disabled={!link.href}
+                                            title={!link.href ? "Coming soon" : undefined}
                                             className="text-sm sm:text-[15px] text-[#A1A1AA] hover:text-white transition-colors duration-200"
                                         >
                                             {link.text}

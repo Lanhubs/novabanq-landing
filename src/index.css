@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @keyframes orbit-spin {
   from {
     transform: rotate(0deg);

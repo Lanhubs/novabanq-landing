@@ -4,15 +4,19 @@ const WaitlistForm: FC = () => {
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
+    const [message, setMessage] = useState("")
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        // Handle form submission
-        console.log({ fullName, email, phone })
+        if (!fullName.trim()) {
+            setMessage("Please enter your full name.")
+            return
+        }
+        setMessage("Waitlist signup is not available yet. Please try again later.")
     }
 
     return (
-        <section className="w-full bg-[#50C878] py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <section id="waitlist" className="w-full bg-[#50C878] py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-10 sm:mb-14">
@@ -40,6 +44,8 @@ const WaitlistForm: FC = () => {
                             <input
                                 id="waitlist-fullname"
                                 type="text"
+                                required
+                                autoComplete="name"
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
                                 placeholder="Enter your full name"
@@ -58,6 +64,8 @@ const WaitlistForm: FC = () => {
                             <input
                                 id="waitlist-email"
                                 type="email"
+                                required
+                                autoComplete="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="you@example.com"
@@ -76,6 +84,7 @@ const WaitlistForm: FC = () => {
                             <input
                                 id="waitlist-phone"
                                 type="tel"
+                                autoComplete="tel"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 placeholder="+234..."
@@ -103,6 +112,7 @@ const WaitlistForm: FC = () => {
                                 />
                             </svg>
                         </button>
+                        {message && <p role="status" className="text-sm text-[#1a3d2a]">{message}</p>}
                     </form>
                 </div>
             </div>

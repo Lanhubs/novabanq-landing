@@ -41,7 +41,7 @@ const BriefsSection: FC = () => {
     }
 
     return (
-        <section className="bg-[#EEEEEE] w-full py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+        <section id="faqs" className="bg-[#EEEEEE] w-full py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
                 {/* Section Header */}
                 <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#111827] tracking-tight leading-snug mb-8 sm:mb-10">
