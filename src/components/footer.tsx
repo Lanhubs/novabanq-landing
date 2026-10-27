@@ -21,7 +21,7 @@ const footerColumns = [
     {
         title: "Socials",
         links: [
-            { text: "Twitter", href: import.meta.env.VITE_TWITTER_URL },
+            { text: "Twitter", href: "https://x.com/usenovabanq" },
             { text: "Instagram", href: import.meta.env.VITE_INSTAGRAM_URL },
             { text: "Linkedin", href: import.meta.env.VITE_LINKEDIN_URL },
         ],

@@ -1,5 +1,19 @@
 # React + TypeScript + Vite
 
+## Landing page configuration
+
+Copy `.env.example` to `.env.local` and supply the official contact email,
+Instagram URL, and LinkedIn URL when available. Restart Vite after changing
+these values; production builds need the values set before `npm run build`.
+Twitter links to https://x.com/usenovabanq. App-store buttons are awaiting their
+destinations.
+
+The waitlist form validates name and email but does not submit yet. The backend
+README, `novabanq_doc.md`, `docs/api-contract.md`, and the live OpenAPI schema at
+https://novabanq-api-5w9p.onrender.com/openapi.json did not specify a waitlist
+endpoint when checked on 2026-10-27. Confirm the endpoint, request fields, and
+response/error contract before connecting submissions. No signup data is logged.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
