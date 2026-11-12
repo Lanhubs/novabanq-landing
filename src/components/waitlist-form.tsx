@@ -1,18 +1,47 @@
 import { useState, type FC, type FormEvent } from "react"
+import { joinWaitlist, WaitlistApiError } from "../lib/waitlist-api"
+
+// Keyed on the API's `error.code`, which is the field the contract says
+// to branch on; `error.message` is for logs. A 409 reads as good news
+// because the visitor's goal — being on the list — is already true.
+const messageForCode = (code: string): string => {
+    if (code === "WAITLIST_EMAIL_EXISTS") return "You're already on the waitlist with this email."
+    if (code === "RATE_LIMITED") return "Too many attempts. Please wait a few minutes and try again."
+    if (code === "VALIDATION_ERROR") return "Please check your details and try again."
+    return "Something went wrong. Please try again."
+}
 
 const WaitlistForm: FC = () => {
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
     const [message, setMessage] = useState("")
+    const [submitting, setSubmitting] = useState(false)
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         if (!fullName.trim()) {
             setMessage("Please enter your full name.")
             return
         }
-        setMessage("Waitlist signup is not available yet. Please try again later.")
+
+        setSubmitting(true)
+        setMessage("")
+        try {
+            await joinWaitlist({
+                full_name: fullName.trim(),
+                email: email.trim(),
+                // Omitted when blank rather than sent as "": the API
+                // rejects a phone shorter than 7 characters and refuses
+                // unknown fields outright.
+                ...(phone.trim() ? { phone: phone.trim() } : {}),
+            })
+            setMessage("You're on the list. We'll be in touch when NovaBanq opens.")
+        } catch (error) {
+            setMessage(messageForCode(error instanceof WaitlistApiError ? error.code : "INTERNAL_ERROR"))
+        } finally {
+            setSubmitting(false)
+        }
     }
 
     return (
@@ -95,9 +124,10 @@ const WaitlistForm: FC = () => {
                         {/* Submit Button */}
                         <button
                             type="submit"
+                            disabled={submitting}
                             className="w-full bg-[#005100] hover:bg-[#003d00] text-white text-sm sm:text-base font-semibold py-3.5 sm:py-4 rounded-lg mt-2 sm:mt-3 cursor-pointer transition-all duration-200 hover:shadow-lg hover:shadow-[#003d00]/30 flex items-center justify-center gap-2.5"
                         >
-                            <span>Join waitlist</span>
+                            <span>{submitting ? "Joining…" : "Join waitlist"}</span>
                             <svg
                                 className="w-4 h-4 sm:w-5 sm:h-5"
                                 fill="none"
